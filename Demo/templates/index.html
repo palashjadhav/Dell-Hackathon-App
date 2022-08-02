@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dell-Hackathon</title>
+</head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='index.css') }}">
+
+	<script type="text/javascript" src="{{ url_for('static',filename = 'index.js')}}"></script> 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<body>
+ <div class="container-fluid">
+	<header>
+		<div class="row">
+		</div>
+	</header>
+   <form action="http://localhost:5000" method="post">
+	<div class="mainBody">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="row firstRow">
+					<div class="col-sm-3">
+						<select class="form-control form-control-lg" name="category" id="brandName"  required>
+					        <option value="">Brand</option>
+					        <option value="Dell">Dell</option>
+					        <option value="Apple">Apple</option>
+					        <option value="Averatec">Averatec</option>
+					        <option value="Asus">Asus</option>
+					        <option value="Acer">Acer</option>
+					        <option value="Fujitsu">Fujitsu</option>
+					        <option value="Gateway">Gateway</option>
+					        <option value="HP">HP</option>
+					        <option value="Lenovo">Lenovo</option>
+					        <option value="Panasonic">Panasonic</option>
+					        <option value="Toshiba">Toshiba</option>
+					        <option value="Sony">Sony</option>
+					    </select>
+					</div>
+					<div class="col-sm-3">
+						<select class="form-control form-control-lg" id="osName" name="os" required>
+							<option value="">Operating System</option>
+							<option value="Mac_OS">Mac OS</option>
+							<option value="Vista_Business">Vista Business</option>
+							<option value="VistaHB:_Vista_Home_Basic">VistaHB: Vista Home Basic</option>
+							<option value="VistaHP:_Vista_Home_Premium">VistaHP: Vista Home Premium</option>
+							<option value="VistaUlt:_Vista_Ultimate">VistaUlt: Vista Ultimate</option>
+							<option value="WinXP">WinXP</option>
+							<option value="WinXP_Pro">WinXP_Pro</option>
+						</select>
+					</div>
+					<div class="col-sm-3">
+						<select class="form-control form-control-lg" id="warranty" name="warranty" required>
+							<option value="">Warranty</option>
+							<option value="90">90</option>
+							<option value="365">365</option>
+							<option value="720">720</option>
+							<option value="1095">1095</option>
+						</select>
+					</div>
+					<div class="col-sm-3">
+						<select class="form-control form-control-lg" id="InternalMemory" name="memory" required>
+							<option value="">Memory</option>
+							<option value="128">128</option>
+							<option value="256">256</option>
+							<option value="512">512</option>
+							<option value="1000">1000</option>
+							<option value="1024">1024</option>
+							<option value="1500">1500</option>
+							<option value="2000">2000</option>
+							<option value="2048">2048</option>
+						</select>
+					</div>	
+				</div>
+				<br>
+				<div class="row secondRow">
+					<div class="col-sm-3">
+						<select class="form-control form-control-lg" id="ProcessorSelect" name="processor" required>
+							<option value="">Processor</option>
+							<option value="Intel Core2 Duo">Intel Core2 Duo</option>
+							<option value="Intel Core2 Single">Intel Core2 Single</option>
+							<option value="Intel Celeron">Intel Celeron</option>
+							
+							<option value="">Intel Pentium Dual-Core</option>
+							<option value="AMD Mobile Sempron">AMD Mobile Sempron</option>
+							<option value="AMD Turion 64x2">AMD Turion 64x2</option>
+							<option value="AMD Athlon 64x2 Doble Nucleo">AMD Athlon 64x2 Doble Nucleo</option>
+							<option value="PowerPC">Power PC</option>
+						</select>
+					</div>
+					<div class="col-sm-3">
+						<select class="form-control form-control-lg" id="MemoryTech" name="MemoryTechnology" required>
+							<option value="">Memory Tech</option>
+							<option value="DDR2">DDR2</option>
+							<option value="SDRAM">SDRAM</option>
+							<option value="DDR-SDRAM(DDRRAM)">DDR-SDRAM(DDRRAM)</option>
+						</select>
+					</div>
+					<div class="col-sm-3">
+						<input type="number" name="Resolution" placeholder="Horizontal Resolution" min=500 max=1536 required>	
+					</div>
+					
+					<div class="col-sm-3">
+						<input type="number" name="proSpeed" placeholder="Processor Speed" min=867 max=2800 required>	
+					</div>
+				</div>
+				<div class="row checkboxRow">
+					<div class="col-sm-6 checkboxDiv">
+						<div class="row">
+							<div class="col-sm-6">
+								<input type="checkbox" name="Infrared" value="1"><label>Infrared</label>
+							</div>
+							<div class="col-sm-6">
+								<input type="checkbox" name="Bluetooth" value="1"><label>Bluetooth</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<input type="checkbox" name="Port Replicator" value="1"><label>Port Replicator</label>		
+							</div>
+							<div class="col-sm-6">
+								<input type="checkbox" name="Docking Station" value="1"><label>Docking Station</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<input type="checkbox" name="Fingerprint" value="1"><label>Fingerprint</label>
+							</div>
+							<div class="col-sm-6">
+								<input type="checkbox" name="External Battery" value="1"><label>External Battery</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<input type="checkbox" name="CDMA" value="1"><label>CDMA</label>
+							</div>
+							<div class="col-sm-6">
+								<input type="checkbox" name="Subwoofer" value="1"><label>Subwoofer</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="row rightSide">
+					<div class="col-sm-3"></div>
+					<div class="col-sm-6">
+						<div class="checkDiv">
+							<input type="checkbox" id="chcYes" onclick="showDiv()" name="newFeature" value="newFeature"> <label>Add a new feature?</label>
+						</div>
+						<div class="newDiv javaA" id="inpField">
+							<input type="text" name="newFeatureInp" placeholder="What new feature are you planning to add?" >
+						</div>
+					</div>
+					<div class="col-sm-3"></div>
+				</div>
+			</div>
+		</div>
+		
+		<br>
+		<div class="row priceRow">
+			<div class="col-sm-3">
+				<input type="number" name="Price" placeholder="Selling Price" required>
+			</div>
+		</div>
+		<div class="row endRow">
+			<div class="col-sm-3">
+				<button type="submit" class="btn btn-info btn-lg">Forecast</button>
+			</div>
+		</div>
+	</div>
+  </form>	
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sales Forecast</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='next.css') }}">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet">
+	   <script src="{{url_for('static', filename='graph_ani.js')}}"></script>
+	   	   <script src="{{url_for('static', filename='index.js')}}"></script>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+</head>
+<style type="text/css">
+	.graphRow
+	{
+		margin-top: 10%;
+		vertical-align: middle;
+		text-align: center;
+	}
+	.salesRow
+	{
+		margin-top: 5%;
+	}
+	.buttonRow
+	{
+		padding-top: 5%;
+	}
+	#mailTemp
+	{
+		margin-top: 5%;
+	}
+	#mailTemp input
+	{	
+
+		border-radius: 8px;
+		width: 80%;
+		height: 30px;
+	}
+	#mailTemp label
+	{
+		vertical-align: middle;
+	}
+	.confSendRow
+	{
+		margin-top: 2%;
+	}
+	#confID,#mailTemp
+	{
+		display: none;
+	}
+	.textDiv .col-sm-10
+	{
+	}
+	.textDiv label
+	{
+		color: white;
+		font-size: 15px;
+
+	}
+
+</style>
+<body>
+ <div class="container-fluid">
+ 	<div class="row ">
+ 		<div class="col-sm-1"></div>
+ 		<div class="salesRow col-sm-5">
+ 			<div class="forecast">
+		 		<div class="forecast-heading" id="sales"><p>Forecasted Sales :</p></div>
+		 		<div class="forecast-circle">
+		 		<br><p id="output">{{ min }} <br> to <br> {{ max }}<br><br>Units/Year</p></div>
+		 	</div>
+ 		</div>
+ 		<div class="col-sm-6 graphRow">
+ 			
+			<div class="graph">
+		 	    <p id="view-graph">View Graph:</p>
+		 		<img id="result-graph" src="/static/graph.png" alt="Graph" style="width:300px;max-width:300px">
+		         <div id="myModal" class="modal">
+		          <span class="close">&times;</span>
+		         <img class="modal-content" id="img01">
+		         <div id="caption"></div>
+		     	</div>
+		    </div>
+		    <br>
+		    <div class="textDiv row">
+		    	<div class="col-sm-2"></div>
+		    	<div class="col-sm-10">
+			    	<div class="col-sm-6">
+			    		<label>Sales when Price Reduced by 20% --></label>
+			    	</div>
+			    	<div class="col-sm-6">
+			    		<label>{{ imin }} % Increment</label>
+			    	</div>
+			    	<div class="col-sm-6">
+			    		<label>Sales when Price Increased by 10% --></label>
+			    	</div>
+			    	<div class="col-sm-6">
+			    		<label>{{ rmin }} % Decrement</label>
+			    	</div>
+		    	</div>
+		    </div>
+ 		</div>
+ 	</div> 
+
+ 	
+ 	
+ 	
+	<div class="row buttonRow">
+		<div class="col-sm-6">
+			<div class="row">
+				<div class="col-sm-1"></div>
+				<div class="col-sm-4">
+					<button type="button"  class="btn">
+						<a href="/">Forecast Again</a>
+					</button>
+				</div>
+				<div class="col-sm-4">
+					<button type="button" class="btn " onclick="sendMail()">Want to Send Mail?
+						
+					</button>
+				</div>
+				<div class="col-sm-3"></div>
+			</div>
+			<form action="http://localhost:5000/forecast/mail" method="POST">
+				<div class="row">
+					<div class="col-sm-1"></div>
+					<div class="col-sm-9">
+						<div class="mailRow row" id="mailTemp">
+							<div class="col-sm-3">
+								<label>Subject:</label>	
+							</div>
+							<div class="col-sm-9">
+								<input type="text" autocomplete="off" name="sub" id="subRec" placeholder="Subject..."><br>	
+							</div>
+							<br><br>
+							<div class="col-sm-3">
+								<label>Recipient:</label>	
+							</div>
+							<div class="col-sm-9">
+								<input type="email" name="rec1" id="emailRec" autocomplete="off" placeholder="Recipient...">
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-1"></div>
+				</div>
+				<div class="row confSendRow" id="confID">
+					<div class="col-sm-3"></div>
+					<div class="col-sm-3">
+						<button type="submit" class="btn">
+						<a href="forecast/mail">Send and Exit</a>
+						</button>
+					</div>
+					<div class="col-sm-3">
+						<button type="button" class="btn" onclick="removeDiv()">
+							Mind Changed?
+						</button>
+					</div>
+					<div class="col-sm-3"></div>
+				</div>
+			</form>
+		</div>
+		<div class="col-sm-6"></div>
+	</div>
+     
+   </div>
+</body>
+</html>
